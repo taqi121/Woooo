@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_dashboardLayout.cshtml";
+}
+
+<div>
+    <header class="content__title">
+        <h1>Dashboard<small>Welcome to the unique Woooo User!</small></h1>
+    </header>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Server Process</h4>
+                    <h6 class="card-subtitle">Maecenas faucibus mollis interdum porttitor</h6>
+
+                    <div class="flot-chart flot-dynamic"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Sales Statistics</h4>
+                    <h6 class="card-subtitle">Vestibulum purus quam scelerisque, mollis nonummy metus</h6>
+
+                    <div class="flot-chart flot-curved-line"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card stats">
+                <div class="card-body">
+                    <h4 class="card-title">Website Views</h4>
+                    <h6 class="card-subtitle">Venenatis portauam Inceptos ameteiam</h6>
+
+                    <div class="stats__info text-blue">52.78M+</div>
+                </div>
+                <div class="stats__2 stats__chart"></div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card stats">
+                <div class="card-body">
+                    <h4 class="card-title">Website Impressions</h4>
+                    <h6 class="card-subtitle">Consectetur Ultricies Porta Fringilla</h6>
+
+                    <div class="stats__info text-amber">9831+</div>
+                </div>
+                <div class="stats__1 stats__chart"></div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card stats">
+                <div class="card-body">
+                    <h4 class="card-title">Total Sales</h4>
+                    <h6 class="card-subtitle">Purus Malesuada Consectetur</h6>
+
+                    <div class="stats__info text-purple">$458,778+</div>
+                </div>
+                <div class="stats__3 stats__chart"></div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

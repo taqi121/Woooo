@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="15e73e1760c949e2a50d607b7c90147a" Name="Diagram1">
+        <EntityTypeShape EntityType="WooooModel.Account" Width="1.5" PointX="3" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WooooModel.AccountType" Width="1.5" PointX="0.75" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WooooModel.AddressBook" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WooooModel.AdminSetting" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WooooModel.Batch" Width="1.5" PointX="5.25" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WooooModel.Bonu" Width="1.5" PointX="5.25" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="WooooModel.Currency" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WooooModel.EmailVerification" Width="1.5" PointX="5.25" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WooooModel.Language" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WooooModel.LanguageResource" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WooooModel.MasterWallet" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WooooModel.Notification" Width="1.5" PointX="5.25" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WooooModel.OrderBook" Width="1.5" PointX="5.25" PointY="27.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WooooModel.Order" Width="1.5" PointX="8.25" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WooooModel.OrderStatu" Width="1.5" PointX="6" PointY="32.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WooooModel.PaymentNote" Width="1.5" PointX="12.75" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WooooModel.Payment" Width="1.5" PointX="10.5" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WooooModel.PaymentStatu" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WooooModel.Post" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WooooModel.RawTest" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WooooModel.ReferralHistory" Width="1.5" PointX="5.25" PointY="36.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WooooModel.Subscribe" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WooooModel.Token" Width="1.5" PointX="9" PointY="29.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WooooModel.UserActivity" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WooooModel.UserRole" Width="1.5" PointX="5.25" PointY="39.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WooooModel.Voucher" Width="1.5" PointX="7.5" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WooooModel.Wallet" Width="1.5" PointX="11.25" PointY="26.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WooooModel.WhiteLabelAddress" Width="1.5" PointX="5.25" PointY="48.625" IsExpanded="true" />
+        <AssociationConnector Association="WooooModel.FK_Accounts_AccountType" ManuallyRouted="false" />
+        <AssociationConnector Association="WooooModel.FK_AddressBook_Accounts" ManuallyRouted="false" />
+        <AssociationConnector Association="WooooModel.FK_Batches_Accounts" ManuallyRouted="false" />
+        <AssociationConnector Association="WooooModel.FK_Bonus_FromAccounts" ManuallyRouted="false" />
+        <AssociationConnector Association="WooooModel.FK_Bonus_ToAccounts" ManuallyRouted="false" />
+        <AssociationConnector Association="WooooModel.FK_EmailVerification_Accounts" ManuallyRouted="false" />
+        <AssociationConnector Association="WooooModel.FK_Notifications_Accounts" ManuallyRouted="false" />
+        <AssociationConnector Association="WooooModel.FK_Orders_Accounts" ManuallyRouted="false" />
+        <AssociationConnector Association="WooooModel.FK_Orders_Accounts1" ManuallyRouted="false" />
+        <AssociationConnector Association="WooooModel.FK_Payments_Accounts" ManuallyRouted="false" />
+        <AssociationConnector Association="WooooModel.FK_ReferralHistory_ChildAccount" ManuallyRouted="false" />
+        <AssociationConnector Association="WooooModel.FK_ReferralHistory_ParentAccount" ManuallyRouted="false" />
+        <AssociationConnector Association="WooooModel.FK_UserRoles_Accounts" ManuallyRouted="false" />
+        <AssociationConnector Association="WooooModel.FK_Vouchers_Accounts" ManuallyRouted="false" />
+        <AssociationConnector Association="WooooModel.FK_Wallets_Wallets" ManuallyRouted="false" />
+        <AssociationConnector Association="WooooModel.FK_WhiteLabelAddress_Accounts" ManuallyRouted="false" />
+        <AssociationConnector Association="WooooModel.FK_Vouchers_Batches" ManuallyRouted="false" />
+        <AssociationConnector Association="WooooModel.FK_Payments_Bonus" ManuallyRouted="false" />
+        <AssociationConnector Association="WooooModel.FK_LanguageResource_Language" ManuallyRouted="false" />
+        <AssociationConnector Association="WooooModel.FK_Orders_OrderStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="WooooModel.FK_PaymentNotes_Payments" ManuallyRouted="false" />
+        <AssociationConnector Association="WooooModel.FK_Wallets_Tokens" ManuallyRouted="false" />
+        <AssociationConnector Association="WooooModel.FK_Vouchers_Vouchers" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="WooooModel.TestUser" Width="1.5" PointX="9.375" PointY="3.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

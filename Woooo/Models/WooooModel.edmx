@@ -1,0 +1,2099 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WooooModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Accounts">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="250" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="Address1" Type="nvarchar(max)" />
+          <Property Name="Address2" Type="nvarchar(max)" />
+          <Property Name="City" Type="nvarchar" MaxLength="100" />
+          <Property Name="Country" Type="nvarchar" MaxLength="100" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="20" />
+          <Property Name="ImageURL" Type="nvarchar(max)" />
+          <Property Name="AccountEnabled" Type="bit" />
+          <Property Name="EnableOn" Type="datetime" />
+          <Property Name="TwoFactorEnabled" Type="bit" />
+          <Property Name="TwoFactorEnableDate" Type="datetime" />
+          <Property Name="EmailVerificationStatus" Type="bit" />
+          <Property Name="EmailVerificationDate" Type="datetime" />
+          <Property Name="AccountType_Id" Type="int" />
+          <Property Name="IdentityProofURLFront" Type="nvarchar(max)" />
+          <Property Name="IdentityProofURLBack" Type="nvarchar(max)" />
+          <Property Name="OtherDocuments" Type="nvarchar(max)" />
+          <Property Name="DOBMonth" Type="int" />
+          <Property Name="DOBYear" Type="int" />
+          <Property Name="DOBDay" Type="int" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="IdentityNumber" Type="nvarchar" MaxLength="250" />
+          <Property Name="TotalRefferedAccounts" Type="int" />
+          <Property Name="ReferredBy" Type="bigint" />
+          <Property Name="ReferralLink" Type="nvarchar(max)" />
+          <Property Name="BonusTokens" Type="money" />
+          <Property Name="RefferrelBonusTokens" Type="money" />
+          <Property Name="Tokens" Type="money" />
+          <Property Name="Discount" Type="float" />
+          <Property Name="Influencer" Type="bit" />
+          <Property Name="ParentID" Type="bigint" />
+          <Property Name="Commission" Type="float" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="AccountType">
+          <Key>
+            <PropertyRef Name="AccountTypeId" />
+          </Key>
+          <Property Name="AccountTypeId" Type="int" Nullable="false" />
+          <Property Name="AccountType" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="AddressBook">
+          <Key>
+            <PropertyRef Name="AdressId" />
+          </Key>
+          <Property Name="AdressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Currency" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="Enabled" Type="bit" />
+          <Property Name="Account_Id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="AdminSettings">
+          <Key>
+            <PropertyRef Name="SettingId" />
+          </Key>
+          <Property Name="SettingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SettingKey" Type="varchar" MaxLength="200" />
+          <Property Name="SettingValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Batches">
+          <Key>
+            <PropertyRef Name="BatchId" />
+          </Key>
+          <Property Name="BatchId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BatchNumber" Type="nvarchar(max)" />
+          <Property Name="BatchName" Type="nvarchar(max)" />
+          <Property Name="BatchDescription" Type="nvarchar(max)" />
+          <Property Name="DistributorAccountId" Type="bigint" />
+          <Property Name="BatchQuantity" Type="bigint" />
+          <Property Name="DiscountPercentage" Type="float" />
+          <Property Name="IsEnabled" Type="bit" />
+        </EntityType>
+        <EntityType Name="Bonus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FromPercentage" Type="float" />
+          <Property Name="ToPercentage" Type="float" />
+          <Property Name="FromAccountId" Type="bigint" />
+          <Property Name="ToAccountId" Type="bigint" />
+          <Property Name="FromAmount" Type="float" />
+          <Property Name="ToAmount" Type="float" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="TimeStamp" Type="datetime" />
+          <Property Name="ToCommission" Type="float" />
+          <Property Name="FromCommission" Type="float" />
+          <Property Name="Currency" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Currencies">
+          <Key>
+            <PropertyRef Name="CurrencyId" />
+          </Key>
+          <Property Name="CurrencyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar(max)" />
+          <Property Name="ThreeDigitName" Type="varchar" MaxLength="50" />
+          <Property Name="IsFiat" Type="bit" />
+          <Property Name="RateBTC" Type="decimal" Precision="18" Scale="10" />
+          <Property Name="LastUpdate" Type="datetime" />
+          <Property Name="TxFree" Type="varchar(max)" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="Confirms" Type="int" />
+          <Property Name="CanConvert" Type="bit" />
+          <Property Name="ImgURL" Type="nvarchar(max)" />
+          <Property Name="Balance" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="Profit" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="Fee" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="MasterPassword" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="EmailVerification">
+          <Key>
+            <PropertyRef Name="EmailVerificationId" />
+          </Key>
+          <Property Name="EmailVerificationId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VerificationCode" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ExpirationDate" Type="datetime" />
+          <Property Name="IsExpired" Type="bit" />
+          <Property Name="Account_Id" Type="bigint" />
+          <Property Name="EmailAddress" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="LanguageId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="LanguageResource">
+          <Key>
+            <PropertyRef Name="ResourceId" />
+          </Key>
+          <Property Name="ResourceId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Value" Type="nvarchar(max)" />
+          <Property Name="LanguageId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="MasterWallets">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="Mnemonic" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PublicAddress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Balance" Type="float" Nullable="false" />
+          <Property Name="Enable" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Notifications">
+          <Key>
+            <PropertyRef Name="NotificationId" />
+          </Key>
+          <Property Name="NotificationId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NotificationDetails" Type="nvarchar(max)" />
+          <Property Name="NotificationHeading" Type="nvarchar(max)" />
+          <Property Name="NotificationIconClass" Type="nvarchar(max)" />
+          <Property Name="RedirectAction" Type="nvarchar(max)" />
+          <Property Name="RedirectController" Type="nvarchar(max)" />
+          <Property Name="IsViewed" Type="bit" />
+          <Property Name="Account_Id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="OrderBook">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Market" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Bid_Ask" Type="decimal" Precision="18" Scale="10" />
+          <Property Name="UnitsFilled" Type="decimal" Precision="18" Scale="10" />
+          <Property Name="TotalUnits" Type="decimal" Precision="18" Scale="10" />
+          <Property Name="ActualRate" Type="decimal" Precision="18" Scale="10" />
+          <Property Name="EstimatedTotal" Type="decimal" Precision="18" Scale="10" />
+          <Property Name="OrderDate" Type="datetime" />
+          <Property Name="OrderType" Type="varchar" MaxLength="50" />
+          <Property Name="Account_Id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderType" Type="varchar" MaxLength="50" />
+          <Property Name="OrderDate" Type="datetime" />
+          <Property Name="Symbol" Type="varchar" MaxLength="500" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="Value" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="OrderStatus_Id" Type="int" />
+          <Property Name="Account_Id" Type="bigint" />
+          <Property Name="IsPendingOrder" Type="bit" />
+          <Property Name="Fee" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="NetworkFee" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="UnderProcessed" Type="bit" />
+          <Property Name="ProfitPercentage" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="OrderStatus">
+          <Key>
+            <PropertyRef Name="OrderStatusId" />
+          </Key>
+          <Property Name="OrderStatusId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PaymentNotes">
+          <Key>
+            <PropertyRef Name="NoteId" />
+          </Key>
+          <Property Name="NoteId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaymentId" Type="bigint" Nullable="false" />
+          <Property Name="NoteType" Type="nvarchar(max)" />
+          <Property Name="NoteDetails" Type="nvarchar(max)" />
+          <Property Name="TimeStamp" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Payments">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Currency" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaymentDate" Type="datetime" />
+          <Property Name="ToWalletAddress" Type="nvarchar(max)" />
+          <Property Name="PaymentType" Type="varchar" MaxLength="50" />
+          <Property Name="StatusMessage" Type="varchar(max)" />
+          <Property Name="TransectionId" Type="nvarchar(max)" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="AmountSent" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="NetworkFee" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Fee" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Confirms" Type="int" />
+          <Property Name="Account_Id" Type="bigint" />
+          <Property Name="PaymentStatus_Id" Type="int" />
+          <Property Name="RevenueBTC" Type="decimal" Precision="18" Scale="10" />
+          <Property Name="FiatCurrency" Type="varchar" MaxLength="50" />
+          <Property Name="FiatAmount" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="BonusId" Type="bigint" />
+          <Property Name="SenderNote" Type="nvarchar(max)" />
+          <Property Name="ReceiverNote" Type="nvarchar(max)" />
+          <Property Name="Note" Type="bit" />
+        </EntityType>
+        <EntityType Name="PaymentStatus">
+          <Key>
+            <PropertyRef Name="PaymentStatusId" />
+          </Key>
+          <Property Name="PaymentStatusId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Posts">
+          <Key>
+            <PropertyRef Name="PostId" />
+          </Key>
+          <Property Name="PostId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PostTitle" Type="nvarchar(max)" />
+          <Property Name="PostDescription" Type="nvarchar(max)" />
+          <Property Name="MoreUrl" Type="nvarchar(max)" />
+          <Property Name="Other" Type="nvarchar(max)" />
+          <Property Name="PostDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="RawTest">
+          <Key>
+            <PropertyRef Name="RawId" />
+          </Key>
+          <Property Name="RawId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar(max)" />
+          <Property Name="TestElements" Type="varchar(max)" />
+          <Property Name="date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ReferralHistory">
+          <Key>
+            <PropertyRef Name="ReferralId" />
+          </Key>
+          <Property Name="ReferralId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChildAccount" Type="bigint" />
+          <Property Name="ParentAccount" Type="bigint" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="ReferralAmount" Type="money" />
+          <Property Name="Currency" Type="varchar" MaxLength="50" />
+          <Property Name="ReferralDate" Type="datetime" />
+          <Property Name="TransactionId" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Subscribe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TestUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="100" />
+          <Property Name="LastName" Type="varchar" MaxLength="100" />
+          <Property Name="Address" Type="varchar(max)" />
+          <Property Name="Password" Type="varchar(max)" />
+          <Property Name="ConfirmPassword" Type="varchar(max)" />
+          <Property Name="UserID" Type="varchar" MaxLength="50" />
+          <Property Name="Mobile" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Tokens">
+          <Key>
+            <PropertyRef Name="TokenId" />
+          </Key>
+          <Property Name="TokenId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TokenName" Type="nvarchar" MaxLength="200" />
+          <Property Name="TokenShortName" Type="nvarchar" MaxLength="50" />
+          <Property Name="TokenMasterAddress" Type="nvarchar(max)" />
+          <Property Name="TokenPublicKey" Type="nvarchar(max)" />
+          <Property Name="TokenPrivateKey" Type="nvarchar(max)" />
+          <Property Name="TokenPriceETH" Type="money" />
+          <Property Name="TokenBalance" Type="money" />
+          <Property Name="SmartContractAddress" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="UserActivities">
+          <Key>
+            <PropertyRef Name="ActivityId" />
+          </Key>
+          <Property Name="ActivityId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IPAddress" Type="varchar" MaxLength="50" />
+          <Property Name="UserAgent" Type="nvarchar(max)" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="100" />
+          <Property Name="ActivityDate" Type="datetime" />
+          <Property Name="ActivityType" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="UserRoleId" />
+          </Key>
+          <Property Name="UserRoleId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="200" />
+          <Property Name="Password" Type="nvarchar" MaxLength="250" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="HashExpirationDate" Type="datetime" />
+          <Property Name="Account_Id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Vouchers">
+          <Key>
+            <PropertyRef Name="VoucherId" />
+          </Key>
+          <Property Name="VoucherId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VoucherCode" Type="nvarchar(max)" />
+          <Property Name="AccountId" Type="bigint" />
+          <Property Name="DiscountPercent" Type="float" />
+          <Property Name="IsRedeemed" Type="bit" />
+          <Property Name="RedeemedOn" Type="datetime" />
+          <Property Name="BatchId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Wallets">
+          <Key>
+            <PropertyRef Name="WalletId" />
+          </Key>
+          <Property Name="WalletId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Currency" Type="nvarchar" MaxLength="200" />
+          <Property Name="WalletAddress" Type="nvarchar(max)" />
+          <Property Name="BarcodeImageURL" Type="nvarchar(max)" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="WalletType" Type="varchar" MaxLength="50" />
+          <Property Name="DesTag" Type="varchar(max)" />
+          <Property Name="PublicKey" Type="varchar(max)" />
+          <Property Name="Balance" Type="decimal" Precision="18" Scale="10" />
+          <Property Name="BalanceStoshis" Type="decimal" Precision="18" Scale="10" />
+          <Property Name="Account_Id" Type="bigint" />
+          <Property Name="Bonus" Type="decimal" Precision="18" Scale="10" />
+          <Property Name="RefBonus" Type="decimal" Precision="18" Scale="10" />
+          <Property Name="TokenId" Type="int" />
+          <Property Name="Mnemonics" Type="nvarchar(max)" />
+          <Property Name="PendingBalance" Type="decimal" Precision="18" Scale="10" />
+          <Property Name="TxIndex" Type="bigint" />
+          <Property Name="UnderProcessed" Type="bit" />
+        </EntityType>
+        <EntityType Name="WhiteLabelAddress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountId" Type="bigint" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Currency" Type="nvarchar(max)" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="Timespan" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_Accounts_AccountType">
+          <End Role="AccountType" Type="Self.AccountType" Multiplicity="0..1" />
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountType">
+              <PropertyRef Name="AccountTypeId" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="AccountType_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AddressBook_Accounts">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="0..1" />
+          <End Role="AddressBook" Type="Self.AddressBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="AddressBook">
+              <PropertyRef Name="Account_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Batches_Accounts">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="0..1" />
+          <End Role="Batches" Type="Self.Batches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Batches">
+              <PropertyRef Name="DistributorAccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bonus_FromAccounts">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="0..1" />
+          <End Role="Bonus" Type="Self.Bonus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Bonus">
+              <PropertyRef Name="FromAccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bonus_ToAccounts">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="0..1" />
+          <End Role="Bonus" Type="Self.Bonus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Bonus">
+              <PropertyRef Name="ToAccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmailVerification_Accounts">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="0..1" />
+          <End Role="EmailVerification" Type="Self.EmailVerification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="EmailVerification">
+              <PropertyRef Name="Account_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LanguageResource_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="0..1" />
+          <End Role="LanguageResource" Type="Self.LanguageResource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="LanguageId" />
+            </Principal>
+            <Dependent Role="LanguageResource">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notifications_Accounts">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="0..1" />
+          <End Role="Notifications" Type="Self.Notifications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Notifications">
+              <PropertyRef Name="Account_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Accounts">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="0..1" />
+          <End Role="OrderBook" Type="Self.OrderBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="OrderBook">
+              <PropertyRef Name="Account_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Accounts1">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Account_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_OrderStatus">
+          <End Role="OrderStatus" Type="Self.OrderStatus" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderStatus">
+              <PropertyRef Name="OrderStatusId" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="OrderStatus_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentNotes_Payments">
+          <End Role="Payments" Type="Self.Payments" Multiplicity="1" />
+          <End Role="PaymentNotes" Type="Self.PaymentNotes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payments">
+              <PropertyRef Name="PaymentId" />
+            </Principal>
+            <Dependent Role="PaymentNotes">
+              <PropertyRef Name="PaymentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payments_Accounts">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="0..1" />
+          <End Role="Payments" Type="Self.Payments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Payments">
+              <PropertyRef Name="Account_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payments_Bonus">
+          <End Role="Bonus" Type="Self.Bonus" Multiplicity="0..1" />
+          <End Role="Payments" Type="Self.Payments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bonus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Payments">
+              <PropertyRef Name="BonusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReferralHistory_ChildAccount">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="0..1" />
+          <End Role="ReferralHistory" Type="Self.ReferralHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="ReferralHistory">
+              <PropertyRef Name="ChildAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReferralHistory_ParentAccount">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="0..1" />
+          <End Role="ReferralHistory" Type="Self.ReferralHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="ReferralHistory">
+              <PropertyRef Name="ParentAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_Accounts">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="0..1" />
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="Account_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vouchers_Accounts">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="0..1" />
+          <End Role="Vouchers" Type="Self.Vouchers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Vouchers">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vouchers_Batches">
+          <End Role="Batches" Type="Self.Batches" Multiplicity="0..1" />
+          <End Role="Vouchers" Type="Self.Vouchers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batches">
+              <PropertyRef Name="BatchId" />
+            </Principal>
+            <Dependent Role="Vouchers">
+              <PropertyRef Name="BatchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vouchers_Vouchers">
+          <End Role="Vouchers" Type="Self.Vouchers" Multiplicity="1" />
+          <End Role="Vouchers1" Type="Self.Vouchers" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Vouchers">
+              <PropertyRef Name="VoucherId" />
+            </Principal>
+            <Dependent Role="Vouchers1">
+              <PropertyRef Name="VoucherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wallets_Tokens">
+          <End Role="Tokens" Type="Self.Tokens" Multiplicity="0..1" />
+          <End Role="Wallets" Type="Self.Wallets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tokens">
+              <PropertyRef Name="TokenId" />
+            </Principal>
+            <Dependent Role="Wallets">
+              <PropertyRef Name="TokenId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wallets_Wallets">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="0..1" />
+          <End Role="Wallets" Type="Self.Wallets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Wallets">
+              <PropertyRef Name="Account_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WhiteLabelAddress_Accounts">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="0..1" />
+          <End Role="WhiteLabelAddress" Type="Self.WhiteLabelAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="WhiteLabelAddress">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WooooModelStoreContainer">
+          <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccountType" EntityType="Self.AccountType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AddressBook" EntityType="Self.AddressBook" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdminSettings" EntityType="Self.AdminSettings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Batches" EntityType="Self.Batches" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bonus" EntityType="Self.Bonus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Currencies" EntityType="Self.Currencies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmailVerification" EntityType="Self.EmailVerification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Language" EntityType="Self.Language" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LanguageResource" EntityType="Self.LanguageResource" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MasterWallets" EntityType="Self.MasterWallets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notifications" EntityType="Self.Notifications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderBook" EntityType="Self.OrderBook" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderStatus" EntityType="Self.OrderStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentNotes" EntityType="Self.PaymentNotes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payments" EntityType="Self.Payments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentStatus" EntityType="Self.PaymentStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Posts" EntityType="Self.Posts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RawTest" EntityType="Self.RawTest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReferralHistory" EntityType="Self.ReferralHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subscribe" EntityType="Self.Subscribe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TestUser" EntityType="Self.TestUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tokens" EntityType="Self.Tokens" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserActivities" EntityType="Self.UserActivities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vouchers" EntityType="Self.Vouchers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wallets" EntityType="Self.Wallets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WhiteLabelAddress" EntityType="Self.WhiteLabelAddress" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Accounts_AccountType" Association="Self.FK_Accounts_AccountType">
+            <End Role="AccountType" EntitySet="AccountType" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AddressBook_Accounts" Association="Self.FK_AddressBook_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="AddressBook" EntitySet="AddressBook" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Batches_Accounts" Association="Self.FK_Batches_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Batches" EntitySet="Batches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bonus_FromAccounts" Association="Self.FK_Bonus_FromAccounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Bonus" EntitySet="Bonus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bonus_ToAccounts" Association="Self.FK_Bonus_ToAccounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Bonus" EntitySet="Bonus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmailVerification_Accounts" Association="Self.FK_EmailVerification_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="EmailVerification" EntitySet="EmailVerification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LanguageResource_Language" Association="Self.FK_LanguageResource_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="LanguageResource" EntitySet="LanguageResource" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notifications_Accounts" Association="Self.FK_Notifications_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Notifications" EntitySet="Notifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Accounts" Association="Self.FK_Orders_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="OrderBook" EntitySet="OrderBook" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Accounts1" Association="Self.FK_Orders_Accounts1">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_OrderStatus" Association="Self.FK_Orders_OrderStatus">
+            <End Role="OrderStatus" EntitySet="OrderStatus" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentNotes_Payments" Association="Self.FK_PaymentNotes_Payments">
+            <End Role="Payments" EntitySet="Payments" />
+            <End Role="PaymentNotes" EntitySet="PaymentNotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payments_Accounts" Association="Self.FK_Payments_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Payments" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payments_Bonus" Association="Self.FK_Payments_Bonus">
+            <End Role="Bonus" EntitySet="Bonus" />
+            <End Role="Payments" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReferralHistory_ChildAccount" Association="Self.FK_ReferralHistory_ChildAccount">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="ReferralHistory" EntitySet="ReferralHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReferralHistory_ParentAccount" Association="Self.FK_ReferralHistory_ParentAccount">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="ReferralHistory" EntitySet="ReferralHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_Accounts" Association="Self.FK_UserRoles_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vouchers_Accounts" Association="Self.FK_Vouchers_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Vouchers" EntitySet="Vouchers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vouchers_Batches" Association="Self.FK_Vouchers_Batches">
+            <End Role="Batches" EntitySet="Batches" />
+            <End Role="Vouchers" EntitySet="Vouchers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vouchers_Vouchers" Association="Self.FK_Vouchers_Vouchers">
+            <End Role="Vouchers" EntitySet="Vouchers" />
+            <End Role="Vouchers1" EntitySet="Vouchers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wallets_Tokens" Association="Self.FK_Wallets_Tokens">
+            <End Role="Tokens" EntitySet="Tokens" />
+            <End Role="Wallets" EntitySet="Wallets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wallets_Wallets" Association="Self.FK_Wallets_Wallets">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Wallets" EntitySet="Wallets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WhiteLabelAddress_Accounts" Association="Self.FK_WhiteLabelAddress_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="WhiteLabelAddress" EntitySet="WhiteLabelAddress" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WooooModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="Address1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ZipCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ImageURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AccountEnabled" Type="Boolean" />
+          <Property Name="EnableOn" Type="DateTime" Precision="3" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" />
+          <Property Name="TwoFactorEnableDate" Type="DateTime" Precision="3" />
+          <Property Name="EmailVerificationStatus" Type="Boolean" />
+          <Property Name="EmailVerificationDate" Type="DateTime" Precision="3" />
+          <Property Name="AccountType_Id" Type="Int32" />
+          <Property Name="IdentityProofURLFront" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdentityProofURLBack" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OtherDocuments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DOBMonth" Type="Int32" />
+          <Property Name="DOBYear" Type="Int32" />
+          <Property Name="DOBDay" Type="Int32" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="IdentityNumber" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TotalRefferedAccounts" Type="Int32" />
+          <Property Name="ReferredBy" Type="Int64" />
+          <Property Name="ReferralLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BonusTokens" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="RefferrelBonusTokens" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Tokens" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Discount" Type="Double" />
+          <Property Name="Influencer" Type="Boolean" />
+          <Property Name="ParentID" Type="Int64" />
+          <Property Name="Commission" Type="Double" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AccountType" Relationship="Self.FK_Accounts_AccountType" FromRole="Accounts" ToRole="AccountType" />
+          <NavigationProperty Name="AddressBooks" Relationship="Self.FK_AddressBook_Accounts" FromRole="Accounts" ToRole="AddressBook" />
+          <NavigationProperty Name="Batches" Relationship="Self.FK_Batches_Accounts" FromRole="Accounts" ToRole="Batches" />
+          <NavigationProperty Name="Bonus" Relationship="Self.FK_Bonus_FromAccounts" FromRole="Accounts" ToRole="Bonus" />
+          <NavigationProperty Name="Bonus1" Relationship="Self.FK_Bonus_ToAccounts" FromRole="Accounts" ToRole="Bonus" />
+          <NavigationProperty Name="EmailVerifications" Relationship="Self.FK_EmailVerification_Accounts" FromRole="Accounts" ToRole="EmailVerification" />
+          <NavigationProperty Name="Notifications" Relationship="Self.FK_Notifications_Accounts" FromRole="Accounts" ToRole="Notifications" />
+          <NavigationProperty Name="OrderBooks" Relationship="Self.FK_Orders_Accounts" FromRole="Accounts" ToRole="OrderBook" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Accounts1" FromRole="Accounts" ToRole="Orders" />
+          <NavigationProperty Name="Payments" Relationship="Self.FK_Payments_Accounts" FromRole="Accounts" ToRole="Payments" />
+          <NavigationProperty Name="ReferralHistories" Relationship="Self.FK_ReferralHistory_ChildAccount" FromRole="Accounts" ToRole="ReferralHistory" />
+          <NavigationProperty Name="ReferralHistories1" Relationship="Self.FK_ReferralHistory_ParentAccount" FromRole="Accounts" ToRole="ReferralHistory" />
+          <NavigationProperty Name="UserRoles" Relationship="Self.FK_UserRoles_Accounts" FromRole="Accounts" ToRole="UserRoles" />
+          <NavigationProperty Name="Vouchers" Relationship="Self.FK_Vouchers_Accounts" FromRole="Accounts" ToRole="Vouchers" />
+          <NavigationProperty Name="Wallets" Relationship="Self.FK_Wallets_Wallets" FromRole="Accounts" ToRole="Wallets" />
+          <NavigationProperty Name="WhiteLabelAddresses" Relationship="Self.FK_WhiteLabelAddress_Accounts" FromRole="Accounts" ToRole="WhiteLabelAddress" />
+        </EntityType>
+        <EntityType Name="AccountType">
+          <Key>
+            <PropertyRef Name="AccountTypeId" />
+          </Key>
+          <Property Name="AccountTypeId" Type="Int32" Nullable="false" />
+          <Property Name="AccountType1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK_Accounts_AccountType" FromRole="AccountType" ToRole="Accounts" />
+        </EntityType>
+        <EntityType Name="AddressBook">
+          <Key>
+            <PropertyRef Name="AdressId" />
+          </Key>
+          <Property Name="AdressId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="Enabled" Type="Boolean" />
+          <Property Name="Account_Id" Type="Int64" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_AddressBook_Accounts" FromRole="AddressBook" ToRole="Accounts" />
+        </EntityType>
+        <EntityType Name="AdminSetting">
+          <Key>
+            <PropertyRef Name="SettingId" />
+          </Key>
+          <Property Name="SettingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SettingKey" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SettingValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Batch">
+          <Key>
+            <PropertyRef Name="BatchId" />
+          </Key>
+          <Property Name="BatchId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BatchNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BatchName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BatchDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DistributorAccountId" Type="Int64" />
+          <Property Name="BatchQuantity" Type="Int64" />
+          <Property Name="DiscountPercentage" Type="Double" />
+          <Property Name="IsEnabled" Type="Boolean" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Batches_Accounts" FromRole="Batches" ToRole="Accounts" />
+          <NavigationProperty Name="Vouchers" Relationship="Self.FK_Vouchers_Batches" FromRole="Batches" ToRole="Vouchers" />
+        </EntityType>
+        <EntityType Name="Bonu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FromPercentage" Type="Double" />
+          <Property Name="ToPercentage" Type="Double" />
+          <Property Name="FromAccountId" Type="Int64" />
+          <Property Name="ToAccountId" Type="Int64" />
+          <Property Name="FromAmount" Type="Double" />
+          <Property Name="ToAmount" Type="Double" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TimeStamp" Type="DateTime" Precision="3" />
+          <Property Name="ToCommission" Type="Double" />
+          <Property Name="FromCommission" Type="Double" />
+          <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Bonus_FromAccounts" FromRole="Bonus" ToRole="Accounts" />
+          <NavigationProperty Name="Account1" Relationship="Self.FK_Bonus_ToAccounts" FromRole="Bonus" ToRole="Accounts" />
+          <NavigationProperty Name="Payments" Relationship="Self.FK_Payments_Bonus" FromRole="Bonus" ToRole="Payments" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="CurrencyId" />
+          </Key>
+          <Property Name="CurrencyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThreeDigitName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsFiat" Type="Boolean" />
+          <Property Name="RateBTC" Type="Decimal" Precision="18" Scale="10" />
+          <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+          <Property Name="TxFree" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="Confirms" Type="Int32" />
+          <Property Name="CanConvert" Type="Boolean" />
+          <Property Name="ImgURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Balance" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="Profit" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="Fee" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="MasterPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EmailVerification">
+          <Key>
+            <PropertyRef Name="EmailVerificationId" />
+          </Key>
+          <Property Name="EmailVerificationId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VerificationCode" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="ExpirationDate" Type="DateTime" Precision="3" />
+          <Property Name="IsExpired" Type="Boolean" />
+          <Property Name="Account_Id" Type="Int64" />
+          <Property Name="EmailAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_EmailVerification_Accounts" FromRole="EmailVerification" ToRole="Accounts" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="LanguageId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LanguageResources" Relationship="Self.FK_LanguageResource_Language" FromRole="Language" ToRole="LanguageResource" />
+        </EntityType>
+        <EntityType Name="LanguageResource">
+          <Key>
+            <PropertyRef Name="ResourceId" />
+          </Key>
+          <Property Name="ResourceId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LanguageId" Type="Int64" />
+          <NavigationProperty Name="Language" Relationship="Self.FK_LanguageResource_Language" FromRole="LanguageResource" ToRole="Language" />
+        </EntityType>
+        <EntityType Name="MasterWallet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="Mnemonic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PublicAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Balance" Type="Double" Nullable="false" />
+          <Property Name="Enable" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="NotificationId" />
+          </Key>
+          <Property Name="NotificationId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NotificationDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NotificationHeading" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NotificationIconClass" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RedirectAction" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RedirectController" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsViewed" Type="Boolean" />
+          <Property Name="Account_Id" Type="Int64" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Notifications_Accounts" FromRole="Notifications" ToRole="Accounts" />
+        </EntityType>
+        <EntityType Name="OrderBook">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Market" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Bid_Ask" Type="Decimal" Precision="18" Scale="10" />
+          <Property Name="UnitsFilled" Type="Decimal" Precision="18" Scale="10" />
+          <Property Name="TotalUnits" Type="Decimal" Precision="18" Scale="10" />
+          <Property Name="ActualRate" Type="Decimal" Precision="18" Scale="10" />
+          <Property Name="EstimatedTotal" Type="Decimal" Precision="18" Scale="10" />
+          <Property Name="OrderDate" Type="DateTime" Precision="3" />
+          <Property Name="OrderType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Account_Id" Type="Int64" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Orders_Accounts" FromRole="OrderBook" ToRole="Accounts" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrderDate" Type="DateTime" Precision="3" />
+          <Property Name="Symbol" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="Value" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="OrderStatus_Id" Type="Int32" />
+          <Property Name="Account_Id" Type="Int64" />
+          <Property Name="IsPendingOrder" Type="Boolean" />
+          <Property Name="Fee" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="NetworkFee" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="UnderProcessed" Type="Boolean" />
+          <Property Name="ProfitPercentage" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Orders_Accounts1" FromRole="Orders" ToRole="Accounts" />
+          <NavigationProperty Name="OrderStatu" Relationship="Self.FK_Orders_OrderStatus" FromRole="Orders" ToRole="OrderStatus" />
+        </EntityType>
+        <EntityType Name="OrderStatu">
+          <Key>
+            <PropertyRef Name="OrderStatusId" />
+          </Key>
+          <Property Name="OrderStatusId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_OrderStatus" FromRole="OrderStatus" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="PaymentNote">
+          <Key>
+            <PropertyRef Name="NoteId" />
+          </Key>
+          <Property Name="NoteId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentId" Type="Int64" Nullable="false" />
+          <Property Name="NoteType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NoteDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TimeStamp" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Payment" Relationship="Self.FK_PaymentNotes_Payments" FromRole="PaymentNotes" ToRole="Payments" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+          <Property Name="ToWalletAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StatusMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TransectionId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="AmountSent" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="NetworkFee" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Fee" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Confirms" Type="Int32" />
+          <Property Name="Account_Id" Type="Int64" />
+          <Property Name="PaymentStatus_Id" Type="Int32" />
+          <Property Name="RevenueBTC" Type="Decimal" Precision="18" Scale="10" />
+          <Property Name="FiatCurrency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FiatAmount" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="BonusId" Type="Int64" />
+          <Property Name="SenderNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiverNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="Boolean" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Payments_Accounts" FromRole="Payments" ToRole="Accounts" />
+          <NavigationProperty Name="Bonu" Relationship="Self.FK_Payments_Bonus" FromRole="Payments" ToRole="Bonus" />
+          <NavigationProperty Name="PaymentNotes" Relationship="Self.FK_PaymentNotes_Payments" FromRole="Payments" ToRole="PaymentNotes" />
+        </EntityType>
+        <EntityType Name="PaymentStatu">
+          <Key>
+            <PropertyRef Name="PaymentStatusId" />
+          </Key>
+          <Property Name="PaymentStatusId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="PostId" />
+          </Key>
+          <Property Name="PostId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PostTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PostDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MoreUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Other" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PostDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="RawTest">
+          <Key>
+            <PropertyRef Name="RawId" />
+          </Key>
+          <Property Name="RawId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TestElements" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ReferralHistory">
+          <Key>
+            <PropertyRef Name="ReferralId" />
+          </Key>
+          <Property Name="ReferralId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChildAccount" Type="Int64" />
+          <Property Name="ParentAccount" Type="Int64" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ReferralAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReferralDate" Type="DateTime" Precision="3" />
+          <Property Name="TransactionId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_ReferralHistory_ChildAccount" FromRole="ReferralHistory" ToRole="Accounts" />
+          <NavigationProperty Name="Account1" Relationship="Self.FK_ReferralHistory_ParentAccount" FromRole="ReferralHistory" ToRole="Accounts" />
+        </EntityType>
+        <EntityType Name="Subscribe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Token">
+          <Key>
+            <PropertyRef Name="TokenId" />
+          </Key>
+          <Property Name="TokenId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TokenName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TokenShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TokenMasterAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TokenPublicKey" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TokenPrivateKey" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TokenPriceETH" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TokenBalance" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SmartContractAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Wallets" Relationship="Self.FK_Wallets_Tokens" FromRole="Tokens" ToRole="Wallets" />
+        </EntityType>
+        <EntityType Name="UserActivity">
+          <Key>
+            <PropertyRef Name="ActivityId" />
+          </Key>
+          <Property Name="ActivityId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserAgent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ActivityDate" Type="DateTime" Precision="3" />
+          <Property Name="ActivityType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="UserRoleId" />
+          </Key>
+          <Property Name="UserRoleId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HashExpirationDate" Type="DateTime" Precision="3" />
+          <Property Name="Account_Id" Type="Int64" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_UserRoles_Accounts" FromRole="UserRoles" ToRole="Accounts" />
+        </EntityType>
+        <EntityType Name="Voucher">
+          <Key>
+            <PropertyRef Name="VoucherId" />
+          </Key>
+          <Property Name="VoucherId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VoucherCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AccountId" Type="Int64" />
+          <Property Name="DiscountPercent" Type="Double" />
+          <Property Name="IsRedeemed" Type="Boolean" />
+          <Property Name="RedeemedOn" Type="DateTime" Precision="3" />
+          <Property Name="BatchId" Type="Int64" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Vouchers_Accounts" FromRole="Vouchers" ToRole="Accounts" />
+          <NavigationProperty Name="Batch" Relationship="Self.FK_Vouchers_Batches" FromRole="Vouchers" ToRole="Batches" />
+          <NavigationProperty Name="Vouchers1" Relationship="Self.FK_Vouchers_Vouchers" FromRole="Vouchers" ToRole="Vouchers1" />
+          <NavigationProperty Name="Voucher1" Relationship="Self.FK_Vouchers_Vouchers" FromRole="Vouchers1" ToRole="Vouchers" />
+        </EntityType>
+        <EntityType Name="Wallet">
+          <Key>
+            <PropertyRef Name="WalletId" />
+          </Key>
+          <Property Name="WalletId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Currency" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="WalletAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BarcodeImageURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="WalletType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DesTag" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PublicKey" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Balance" Type="Decimal" Precision="18" Scale="10" />
+          <Property Name="BalanceStoshis" Type="Decimal" Precision="18" Scale="10" />
+          <Property Name="Account_Id" Type="Int64" />
+          <Property Name="Bonus" Type="Decimal" Precision="18" Scale="10" />
+          <Property Name="RefBonus" Type="Decimal" Precision="18" Scale="10" />
+          <Property Name="TokenId" Type="Int32" />
+          <Property Name="Mnemonics" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PendingBalance" Type="Decimal" Precision="18" Scale="10" />
+          <Property Name="TxIndex" Type="Int64" />
+          <Property Name="UnderProcessed" Type="Boolean" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Wallets_Wallets" FromRole="Wallets" ToRole="Accounts" />
+          <NavigationProperty Name="Token" Relationship="Self.FK_Wallets_Tokens" FromRole="Wallets" ToRole="Tokens" />
+        </EntityType>
+        <EntityType Name="WhiteLabelAddress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountId" Type="Int64" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Currency" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="Timespan" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_WhiteLabelAddress_Accounts" FromRole="WhiteLabelAddress" ToRole="Accounts" />
+        </EntityType>
+        <Association Name="FK_Accounts_AccountType">
+          <End Role="AccountType" Type="Self.AccountType" Multiplicity="0..1" />
+          <End Role="Accounts" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountType">
+              <PropertyRef Name="AccountTypeId" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="AccountType_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AddressBook_Accounts">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="AddressBook" Type="Self.AddressBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="AddressBook">
+              <PropertyRef Name="Account_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Batches_Accounts">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Batches" Type="Self.Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Batches">
+              <PropertyRef Name="DistributorAccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bonus_FromAccounts">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Bonus" Type="Self.Bonu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Bonus">
+              <PropertyRef Name="FromAccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bonus_ToAccounts">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Bonus" Type="Self.Bonu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Bonus">
+              <PropertyRef Name="ToAccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmailVerification_Accounts">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="EmailVerification" Type="Self.EmailVerification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="EmailVerification">
+              <PropertyRef Name="Account_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notifications_Accounts">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Notifications" Type="Self.Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Notifications">
+              <PropertyRef Name="Account_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Accounts">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="OrderBook" Type="Self.OrderBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="OrderBook">
+              <PropertyRef Name="Account_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Accounts1">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Account_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payments_Accounts">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Payments" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Payments">
+              <PropertyRef Name="Account_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReferralHistory_ChildAccount">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="ReferralHistory" Type="Self.ReferralHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="ReferralHistory">
+              <PropertyRef Name="ChildAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReferralHistory_ParentAccount">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="ReferralHistory" Type="Self.ReferralHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="ReferralHistory">
+              <PropertyRef Name="ParentAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_Accounts">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="UserRoles" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="Account_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vouchers_Accounts">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Vouchers" Type="Self.Voucher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Vouchers">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wallets_Wallets">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Wallets" Type="Self.Wallet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Wallets">
+              <PropertyRef Name="Account_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WhiteLabelAddress_Accounts">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="WhiteLabelAddress" Type="Self.WhiteLabelAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="WhiteLabelAddress">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vouchers_Batches">
+          <End Role="Batches" Type="Self.Batch" Multiplicity="0..1" />
+          <End Role="Vouchers" Type="Self.Voucher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batches">
+              <PropertyRef Name="BatchId" />
+            </Principal>
+            <Dependent Role="Vouchers">
+              <PropertyRef Name="BatchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payments_Bonus">
+          <End Role="Bonus" Type="Self.Bonu" Multiplicity="0..1" />
+          <End Role="Payments" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bonus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Payments">
+              <PropertyRef Name="BonusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LanguageResource_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="0..1" />
+          <End Role="LanguageResource" Type="Self.LanguageResource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="LanguageId" />
+            </Principal>
+            <Dependent Role="LanguageResource">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_OrderStatus">
+          <End Role="OrderStatus" Type="Self.OrderStatu" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderStatus">
+              <PropertyRef Name="OrderStatusId" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="OrderStatus_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentNotes_Payments">
+          <End Role="Payments" Type="Self.Payment" Multiplicity="1" />
+          <End Role="PaymentNotes" Type="Self.PaymentNote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payments">
+              <PropertyRef Name="PaymentId" />
+            </Principal>
+            <Dependent Role="PaymentNotes">
+              <PropertyRef Name="PaymentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wallets_Tokens">
+          <End Role="Tokens" Type="Self.Token" Multiplicity="0..1" />
+          <End Role="Wallets" Type="Self.Wallet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tokens">
+              <PropertyRef Name="TokenId" />
+            </Principal>
+            <Dependent Role="Wallets">
+              <PropertyRef Name="TokenId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vouchers_Vouchers">
+          <End Role="Vouchers" Type="Self.Voucher" Multiplicity="1" />
+          <End Role="Vouchers1" Type="Self.Voucher" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Vouchers">
+              <PropertyRef Name="VoucherId" />
+            </Principal>
+            <Dependent Role="Vouchers1">
+              <PropertyRef Name="VoucherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WooooEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="Self.Account" />
+          <EntitySet Name="AccountTypes" EntityType="Self.AccountType" />
+          <EntitySet Name="AddressBooks" EntityType="Self.AddressBook" />
+          <EntitySet Name="AdminSettings" EntityType="Self.AdminSetting" />
+          <EntitySet Name="Batches" EntityType="Self.Batch" />
+          <EntitySet Name="Bonus" EntityType="Self.Bonu" />
+          <EntitySet Name="Currencies" EntityType="Self.Currency" />
+          <EntitySet Name="EmailVerifications" EntityType="Self.EmailVerification" />
+          <EntitySet Name="Languages" EntityType="Self.Language" />
+          <EntitySet Name="LanguageResources" EntityType="Self.LanguageResource" />
+          <EntitySet Name="MasterWallets" EntityType="Self.MasterWallet" />
+          <EntitySet Name="Notifications" EntityType="Self.Notification" />
+          <EntitySet Name="OrderBooks" EntityType="Self.OrderBook" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="OrderStatus" EntityType="Self.OrderStatu" />
+          <EntitySet Name="PaymentNotes" EntityType="Self.PaymentNote" />
+          <EntitySet Name="Payments" EntityType="Self.Payment" />
+          <EntitySet Name="PaymentStatus" EntityType="Self.PaymentStatu" />
+          <EntitySet Name="Posts" EntityType="Self.Post" />
+          <EntitySet Name="RawTests" EntityType="Self.RawTest" />
+          <EntitySet Name="ReferralHistories" EntityType="Self.ReferralHistory" />
+          <EntitySet Name="Subscribes" EntityType="Self.Subscribe" />
+          <EntitySet Name="Tokens" EntityType="Self.Token" />
+          <EntitySet Name="UserActivities" EntityType="Self.UserActivity" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+          <EntitySet Name="Vouchers" EntityType="Self.Voucher" />
+          <EntitySet Name="Wallets" EntityType="Self.Wallet" />
+          <EntitySet Name="WhiteLabelAddresses" EntityType="Self.WhiteLabelAddress" />
+          <AssociationSet Name="FK_Accounts_AccountType" Association="Self.FK_Accounts_AccountType">
+            <End Role="AccountType" EntitySet="AccountTypes" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AddressBook_Accounts" Association="Self.FK_AddressBook_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="AddressBook" EntitySet="AddressBooks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Batches_Accounts" Association="Self.FK_Batches_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Batches" EntitySet="Batches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bonus_FromAccounts" Association="Self.FK_Bonus_FromAccounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Bonus" EntitySet="Bonus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bonus_ToAccounts" Association="Self.FK_Bonus_ToAccounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Bonus" EntitySet="Bonus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmailVerification_Accounts" Association="Self.FK_EmailVerification_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="EmailVerification" EntitySet="EmailVerifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notifications_Accounts" Association="Self.FK_Notifications_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Notifications" EntitySet="Notifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Accounts" Association="Self.FK_Orders_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="OrderBook" EntitySet="OrderBooks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Accounts1" Association="Self.FK_Orders_Accounts1">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payments_Accounts" Association="Self.FK_Payments_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Payments" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReferralHistory_ChildAccount" Association="Self.FK_ReferralHistory_ChildAccount">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="ReferralHistory" EntitySet="ReferralHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReferralHistory_ParentAccount" Association="Self.FK_ReferralHistory_ParentAccount">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="ReferralHistory" EntitySet="ReferralHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_Accounts" Association="Self.FK_UserRoles_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vouchers_Accounts" Association="Self.FK_Vouchers_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Vouchers" EntitySet="Vouchers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wallets_Wallets" Association="Self.FK_Wallets_Wallets">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Wallets" EntitySet="Wallets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WhiteLabelAddress_Accounts" Association="Self.FK_WhiteLabelAddress_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="WhiteLabelAddress" EntitySet="WhiteLabelAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vouchers_Batches" Association="Self.FK_Vouchers_Batches">
+            <End Role="Batches" EntitySet="Batches" />
+            <End Role="Vouchers" EntitySet="Vouchers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payments_Bonus" Association="Self.FK_Payments_Bonus">
+            <End Role="Bonus" EntitySet="Bonus" />
+            <End Role="Payments" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LanguageResource_Language" Association="Self.FK_LanguageResource_Language">
+            <End Role="Language" EntitySet="Languages" />
+            <End Role="LanguageResource" EntitySet="LanguageResources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_OrderStatus" Association="Self.FK_Orders_OrderStatus">
+            <End Role="OrderStatus" EntitySet="OrderStatus" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentNotes_Payments" Association="Self.FK_PaymentNotes_Payments">
+            <End Role="Payments" EntitySet="Payments" />
+            <End Role="PaymentNotes" EntitySet="PaymentNotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wallets_Tokens" Association="Self.FK_Wallets_Tokens">
+            <End Role="Tokens" EntitySet="Tokens" />
+            <End Role="Wallets" EntitySet="Wallets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vouchers_Vouchers" Association="Self.FK_Vouchers_Vouchers">
+            <End Role="Vouchers" EntitySet="Vouchers" />
+            <End Role="Vouchers1" EntitySet="Vouchers" />
+          </AssociationSet>
+          <EntitySet Name="TestUsers" EntityType="WooooModel.TestUser" />
+        </EntityContainer>
+        <EntityType Name="TestUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ConfirmPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WooooModelStoreContainer" CdmEntityContainer="WooooEntities">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="WooooModel.Account">
+              <MappingFragment StoreEntitySet="Accounts">
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+                <ScalarProperty Name="AccountEnabled" ColumnName="AccountEnabled" />
+                <ScalarProperty Name="EnableOn" ColumnName="EnableOn" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="TwoFactorEnableDate" ColumnName="TwoFactorEnableDate" />
+                <ScalarProperty Name="EmailVerificationStatus" ColumnName="EmailVerificationStatus" />
+                <ScalarProperty Name="EmailVerificationDate" ColumnName="EmailVerificationDate" />
+                <ScalarProperty Name="AccountType_Id" ColumnName="AccountType_Id" />
+                <ScalarProperty Name="IdentityProofURLFront" ColumnName="IdentityProofURLFront" />
+                <ScalarProperty Name="IdentityProofURLBack" ColumnName="IdentityProofURLBack" />
+                <ScalarProperty Name="OtherDocuments" ColumnName="OtherDocuments" />
+                <ScalarProperty Name="DOBMonth" ColumnName="DOBMonth" />
+                <ScalarProperty Name="DOBYear" ColumnName="DOBYear" />
+                <ScalarProperty Name="DOBDay" ColumnName="DOBDay" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="IdentityNumber" ColumnName="IdentityNumber" />
+                <ScalarProperty Name="TotalRefferedAccounts" ColumnName="TotalRefferedAccounts" />
+                <ScalarProperty Name="ReferredBy" ColumnName="ReferredBy" />
+                <ScalarProperty Name="ReferralLink" ColumnName="ReferralLink" />
+                <ScalarProperty Name="BonusTokens" ColumnName="BonusTokens" />
+                <ScalarProperty Name="RefferrelBonusTokens" ColumnName="RefferrelBonusTokens" />
+                <ScalarProperty Name="Tokens" ColumnName="Tokens" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Influencer" ColumnName="Influencer" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="Commission" ColumnName="Commission" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountTypes">
+            <EntityTypeMapping TypeName="WooooModel.AccountType">
+              <MappingFragment StoreEntitySet="AccountType">
+                <ScalarProperty Name="AccountTypeId" ColumnName="AccountTypeId" />
+                <ScalarProperty Name="AccountType1" ColumnName="AccountType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AddressBooks">
+            <EntityTypeMapping TypeName="WooooModel.AddressBook">
+              <MappingFragment StoreEntitySet="AddressBook">
+                <ScalarProperty Name="AdressId" ColumnName="AdressId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="Account_Id" ColumnName="Account_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdminSettings">
+            <EntityTypeMapping TypeName="WooooModel.AdminSetting">
+              <MappingFragment StoreEntitySet="AdminSettings">
+                <ScalarProperty Name="SettingId" ColumnName="SettingId" />
+                <ScalarProperty Name="SettingKey" ColumnName="SettingKey" />
+                <ScalarProperty Name="SettingValue" ColumnName="SettingValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Batches">
+            <EntityTypeMapping TypeName="WooooModel.Batch">
+              <MappingFragment StoreEntitySet="Batches">
+                <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+                <ScalarProperty Name="BatchNumber" ColumnName="BatchNumber" />
+                <ScalarProperty Name="BatchName" ColumnName="BatchName" />
+                <ScalarProperty Name="BatchDescription" ColumnName="BatchDescription" />
+                <ScalarProperty Name="DistributorAccountId" ColumnName="DistributorAccountId" />
+                <ScalarProperty Name="BatchQuantity" ColumnName="BatchQuantity" />
+                <ScalarProperty Name="DiscountPercentage" ColumnName="DiscountPercentage" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bonus">
+            <EntityTypeMapping TypeName="WooooModel.Bonu">
+              <MappingFragment StoreEntitySet="Bonus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FromPercentage" ColumnName="FromPercentage" />
+                <ScalarProperty Name="ToPercentage" ColumnName="ToPercentage" />
+                <ScalarProperty Name="FromAccountId" ColumnName="FromAccountId" />
+                <ScalarProperty Name="ToAccountId" ColumnName="ToAccountId" />
+                <ScalarProperty Name="FromAmount" ColumnName="FromAmount" />
+                <ScalarProperty Name="ToAmount" ColumnName="ToAmount" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="ToCommission" ColumnName="ToCommission" />
+                <ScalarProperty Name="FromCommission" ColumnName="FromCommission" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Currencies">
+            <EntityTypeMapping TypeName="WooooModel.Currency">
+              <MappingFragment StoreEntitySet="Currencies">
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="ThreeDigitName" ColumnName="ThreeDigitName" />
+                <ScalarProperty Name="IsFiat" ColumnName="IsFiat" />
+                <ScalarProperty Name="RateBTC" ColumnName="RateBTC" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="TxFree" ColumnName="TxFree" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Confirms" ColumnName="Confirms" />
+                <ScalarProperty Name="CanConvert" ColumnName="CanConvert" />
+                <ScalarProperty Name="ImgURL" ColumnName="ImgURL" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="Profit" ColumnName="Profit" />
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="MasterPassword" ColumnName="MasterPassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmailVerifications">
+            <EntityTypeMapping TypeName="WooooModel.EmailVerification">
+              <MappingFragment StoreEntitySet="EmailVerification">
+                <ScalarProperty Name="EmailVerificationId" ColumnName="EmailVerificationId" />
+                <ScalarProperty Name="VerificationCode" ColumnName="VerificationCode" />
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+                <ScalarProperty Name="IsExpired" ColumnName="IsExpired" />
+                <ScalarProperty Name="Account_Id" ColumnName="Account_Id" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Languages">
+            <EntityTypeMapping TypeName="WooooModel.Language">
+              <MappingFragment StoreEntitySet="Language">
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LanguageResources">
+            <EntityTypeMapping TypeName="WooooModel.LanguageResource">
+              <MappingFragment StoreEntitySet="LanguageResource">
+                <ScalarProperty Name="ResourceId" ColumnName="ResourceId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MasterWallets">
+            <EntityTypeMapping TypeName="WooooModel.MasterWallet">
+              <MappingFragment StoreEntitySet="MasterWallets">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Mnemonic" ColumnName="Mnemonic" />
+                <ScalarProperty Name="PublicAddress" ColumnName="PublicAddress" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="Enable" ColumnName="Enable" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notifications">
+            <EntityTypeMapping TypeName="WooooModel.Notification">
+              <MappingFragment StoreEntitySet="Notifications">
+                <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+                <ScalarProperty Name="NotificationDetails" ColumnName="NotificationDetails" />
+                <ScalarProperty Name="NotificationHeading" ColumnName="NotificationHeading" />
+                <ScalarProperty Name="NotificationIconClass" ColumnName="NotificationIconClass" />
+                <ScalarProperty Name="RedirectAction" ColumnName="RedirectAction" />
+                <ScalarProperty Name="RedirectController" ColumnName="RedirectController" />
+                <ScalarProperty Name="IsViewed" ColumnName="IsViewed" />
+                <ScalarProperty Name="Account_Id" ColumnName="Account_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderBooks">
+            <EntityTypeMapping TypeName="WooooModel.OrderBook">
+              <MappingFragment StoreEntitySet="OrderBook">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Market" ColumnName="Market" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Bid_Ask" ColumnName="Bid_Ask" />
+                <ScalarProperty Name="UnitsFilled" ColumnName="UnitsFilled" />
+                <ScalarProperty Name="TotalUnits" ColumnName="TotalUnits" />
+                <ScalarProperty Name="ActualRate" ColumnName="ActualRate" />
+                <ScalarProperty Name="EstimatedTotal" ColumnName="EstimatedTotal" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="OrderType" ColumnName="OrderType" />
+                <ScalarProperty Name="Account_Id" ColumnName="Account_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="WooooModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="OrderType" ColumnName="OrderType" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="Symbol" ColumnName="Symbol" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="OrderStatus_Id" ColumnName="OrderStatus_Id" />
+                <ScalarProperty Name="Account_Id" ColumnName="Account_Id" />
+                <ScalarProperty Name="IsPendingOrder" ColumnName="IsPendingOrder" />
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="NetworkFee" ColumnName="NetworkFee" />
+                <ScalarProperty Name="UnderProcessed" ColumnName="UnderProcessed" />
+                <ScalarProperty Name="ProfitPercentage" ColumnName="ProfitPercentage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderStatus">
+            <EntityTypeMapping TypeName="WooooModel.OrderStatu">
+              <MappingFragment StoreEntitySet="OrderStatus">
+                <ScalarProperty Name="OrderStatusId" ColumnName="OrderStatusId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentNotes">
+            <EntityTypeMapping TypeName="WooooModel.PaymentNote">
+              <MappingFragment StoreEntitySet="PaymentNotes">
+                <ScalarProperty Name="NoteId" ColumnName="NoteId" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="NoteType" ColumnName="NoteType" />
+                <ScalarProperty Name="NoteDetails" ColumnName="NoteDetails" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="WooooModel.Payment">
+              <MappingFragment StoreEntitySet="Payments">
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="ToWalletAddress" ColumnName="ToWalletAddress" />
+                <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+                <ScalarProperty Name="StatusMessage" ColumnName="StatusMessage" />
+                <ScalarProperty Name="TransectionId" ColumnName="TransectionId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="AmountSent" ColumnName="AmountSent" />
+                <ScalarProperty Name="NetworkFee" ColumnName="NetworkFee" />
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="Confirms" ColumnName="Confirms" />
+                <ScalarProperty Name="Account_Id" ColumnName="Account_Id" />
+                <ScalarProperty Name="PaymentStatus_Id" ColumnName="PaymentStatus_Id" />
+                <ScalarProperty Name="RevenueBTC" ColumnName="RevenueBTC" />
+                <ScalarProperty Name="FiatCurrency" ColumnName="FiatCurrency" />
+                <ScalarProperty Name="FiatAmount" ColumnName="FiatAmount" />
+                <ScalarProperty Name="BonusId" ColumnName="BonusId" />
+                <ScalarProperty Name="SenderNote" ColumnName="SenderNote" />
+                <ScalarProperty Name="ReceiverNote" ColumnName="ReceiverNote" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentStatus">
+            <EntityTypeMapping TypeName="WooooModel.PaymentStatu">
+              <MappingFragment StoreEntitySet="PaymentStatus">
+                <ScalarProperty Name="PaymentStatusId" ColumnName="PaymentStatusId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Posts">
+            <EntityTypeMapping TypeName="WooooModel.Post">
+              <MappingFragment StoreEntitySet="Posts">
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+                <ScalarProperty Name="PostTitle" ColumnName="PostTitle" />
+                <ScalarProperty Name="PostDescription" ColumnName="PostDescription" />
+                <ScalarProperty Name="MoreUrl" ColumnName="MoreUrl" />
+                <ScalarProperty Name="Other" ColumnName="Other" />
+                <ScalarProperty Name="PostDate" ColumnName="PostDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RawTests">
+            <EntityTypeMapping TypeName="WooooModel.RawTest">
+              <MappingFragment StoreEntitySet="RawTest">
+                <ScalarProperty Name="RawId" ColumnName="RawId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TestElements" ColumnName="TestElements" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReferralHistories">
+            <EntityTypeMapping TypeName="WooooModel.ReferralHistory">
+              <MappingFragment StoreEntitySet="ReferralHistory">
+                <ScalarProperty Name="ReferralId" ColumnName="ReferralId" />
+                <ScalarProperty Name="ChildAccount" ColumnName="ChildAccount" />
+                <ScalarProperty Name="ParentAccount" ColumnName="ParentAccount" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ReferralAmount" ColumnName="ReferralAmount" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="ReferralDate" ColumnName="ReferralDate" />
+                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subscribes">
+            <EntityTypeMapping TypeName="WooooModel.Subscribe">
+              <MappingFragment StoreEntitySet="Subscribe">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tokens">
+            <EntityTypeMapping TypeName="WooooModel.Token">
+              <MappingFragment StoreEntitySet="Tokens">
+                <ScalarProperty Name="TokenId" ColumnName="TokenId" />
+                <ScalarProperty Name="TokenName" ColumnName="TokenName" />
+                <ScalarProperty Name="TokenShortName" ColumnName="TokenShortName" />
+                <ScalarProperty Name="TokenMasterAddress" ColumnName="TokenMasterAddress" />
+                <ScalarProperty Name="TokenPublicKey" ColumnName="TokenPublicKey" />
+                <ScalarProperty Name="TokenPrivateKey" ColumnName="TokenPrivateKey" />
+                <ScalarProperty Name="TokenPriceETH" ColumnName="TokenPriceETH" />
+                <ScalarProperty Name="TokenBalance" ColumnName="TokenBalance" />
+                <ScalarProperty Name="SmartContractAddress" ColumnName="SmartContractAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserActivities">
+            <EntityTypeMapping TypeName="WooooModel.UserActivity">
+              <MappingFragment StoreEntitySet="UserActivities">
+                <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="UserAgent" ColumnName="UserAgent" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="ActivityDate" ColumnName="ActivityDate" />
+                <ScalarProperty Name="ActivityType" ColumnName="ActivityType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="WooooModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRoles">
+                <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="HashExpirationDate" ColumnName="HashExpirationDate" />
+                <ScalarProperty Name="Account_Id" ColumnName="Account_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vouchers">
+            <EntityTypeMapping TypeName="WooooModel.Voucher">
+              <MappingFragment StoreEntitySet="Vouchers">
+                <ScalarProperty Name="VoucherId" ColumnName="VoucherId" />
+                <ScalarProperty Name="VoucherCode" ColumnName="VoucherCode" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
+                <ScalarProperty Name="IsRedeemed" ColumnName="IsRedeemed" />
+                <ScalarProperty Name="RedeemedOn" ColumnName="RedeemedOn" />
+                <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wallets">
+            <EntityTypeMapping TypeName="WooooModel.Wallet">
+              <MappingFragment StoreEntitySet="Wallets">
+                <ScalarProperty Name="WalletId" ColumnName="WalletId" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="WalletAddress" ColumnName="WalletAddress" />
+                <ScalarProperty Name="BarcodeImageURL" ColumnName="BarcodeImageURL" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="WalletType" ColumnName="WalletType" />
+                <ScalarProperty Name="DesTag" ColumnName="DesTag" />
+                <ScalarProperty Name="PublicKey" ColumnName="PublicKey" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="BalanceStoshis" ColumnName="BalanceStoshis" />
+                <ScalarProperty Name="Account_Id" ColumnName="Account_Id" />
+                <ScalarProperty Name="Bonus" ColumnName="Bonus" />
+                <ScalarProperty Name="RefBonus" ColumnName="RefBonus" />
+                <ScalarProperty Name="TokenId" ColumnName="TokenId" />
+                <ScalarProperty Name="Mnemonics" ColumnName="Mnemonics" />
+                <ScalarProperty Name="PendingBalance" ColumnName="PendingBalance" />
+                <ScalarProperty Name="TxIndex" ColumnName="TxIndex" />
+                <ScalarProperty Name="UnderProcessed" ColumnName="UnderProcessed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WhiteLabelAddresses">
+            <EntityTypeMapping TypeName="WooooModel.WhiteLabelAddress">
+              <MappingFragment StoreEntitySet="WhiteLabelAddress">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Timespan" ColumnName="Timespan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestUsers">
+            <EntityTypeMapping TypeName="WooooModel.TestUser">
+              <MappingFragment StoreEntitySet="TestUser">
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

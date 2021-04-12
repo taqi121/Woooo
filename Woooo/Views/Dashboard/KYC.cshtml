@@ -1,0 +1,176 @@
+﻿@using Woooo.Models;
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+@{
+    ViewBag.Title = "KYC";
+    Layout = "~/Views/Shared/_dashboardLayout.cshtml";
+
+    Account account = ViewBag.Record;
+    if (account != null)
+    {
+        if (account.AccountEnabled == true)
+        {
+            <script>
+        $(document).ready(function () {
+            $('#btnSubmit').attr('disabled', 'disabled');
+            $('#btnSubmit').prop("value", "Already Submitted Your KYC");
+            $('#btnSubmit').css('background', 'red');
+            $('#MiddleName').prop("value", "@account.MiddleName");   $('#MiddleName').attr('readonly', true);
+            $('#address1').prop("value", "@account.Address1");       $('#address1').attr('readonly', true);
+            $('#address2').prop("value", "@account.Address2");       $('#address2').attr('readonly', true);
+            $('#DOBMonth').prop("value", "@account.DOBMonth");       $('#DOBMonth').attr('readonly', true);
+            $('#DOBDay').prop("value", "@account.DOBDay");           $('#DOBDay').attr('readonly', true);
+            $('#DOBYear').prop("value", "@account.DOBYear");         $('#DOBYear').attr('readonly', true);
+            $('#country').prop("value", "@account.Country");         $('#country').attr('readonly', true);
+            $('#zipCode').prop("value", "@account.ZipCode");         $('#zipCode').attr('readonly', true);
+            $('#IdNumber').prop("value", "@account.IdentityNumber"); $('#IdNumber').attr('readonly', true);
+            $('#FirstName').attr('readonly', true);
+            $('#LastName').attr('readonly', true);
+
+            $("#IDFrnt").prop("disabled", true);
+            $("#IDBack").prop("disabled", true);
+            $("#otherDoc").prop("disabled", true);
+            $("#ImgUser").prop("disabled", true);
+        });
+            </script>
+        }
+        else
+        {
+            <script>
+                $(document).ready(function () {
+                    console.log("Its Ok");
+                }
+            </script>
+        }
+    }
+
+}
+
+
+@using (Html.BeginForm("KYC", "Dashboard", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <header class="content__title" style="margin-left:-20px;">
+        <h1>KYC<small>Enter Your All Credentials!</small></h1>
+    </header>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Profile and Verification</h4>
+            <h6 class="card-subtitle">Provide Your Valid Information.</h6>
+
+            <div class="row">
+                <input type="text" value="@Session["userName"]" name="idAccounts" id="idAccounts" hidden />
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" class="form-control input-mask" placeholder="First Name" name="FirstName" id="FirstName" value="@account.FirstName" required>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Middle Name</label>
+                        <input type="text" class="form-control input-mask" @*data-mask="00:00:00"*@ placeholder="Middle Name" name="MiddleName" id="MiddleName" required>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control input-mask" placeholder="Last Name" name="LastName" id="LastName" value="@account.LastName" required>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control input-mask" @*data-mask="00000-000"*@ placeholder="eg: john@example.com" name="email" id="email" value="@account.Email" required>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Address 1</label>
+                        <input type="text" class="form-control input-mask" @*data-mask="000-00-0000000"*@ placeholder="Address1..." name="address1" id="address1" required>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Address 2</label>
+                        <input type="text" class="form-control input-mask" @*data-mask="(00) 0000-0000"*@ placeholder="Address 2..." name="address2" id="address2" required>
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label>Date Of Birth</label><label><small>Month </small></label>
+                        <input type="text" class="form-control input-mask" placeholder="Month" name="DOBMonth" id="DOBMonth" required>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label><small>Date</small></label>
+                        <input type="text" class="form-control input-mask" placeholder="Day" name="DOBDay" id="DOBDay" required>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label><small>Year</small></label>
+                        <input type="text" class="form-control input-mask" placeholder="Year" name="DOBYear" id="DOBYear" required>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Country</label>
+                        <input type="text" class="form-control input-mask" placeholder="Country..." name="country" id="country" required>
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label>Zip Code</label>
+                        <input type="text" class="form-control input-mask" placeholder="eg: 00000000" name="zipCode" id="zipCode" required>
+                    </div>
+                </div>
+
+                <div class="col-sm-4 m-b-20">
+                    <div class="form-group">
+                        <label>Enter Identity Number (National Identity Card Number / Driving License Number)</label>
+                        <input type="text" class="form-control input-mask" placeholder="eg: 000000000000" name="IdNumber" id="IdNumber" required>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Identity Front(NIC/Passport/Driving License)</label><br /><br />
+                        <input type="file" class="form-control input-mask" data-mask="0000 0000 0000 0000" placeholder="eg: 0000 0000 0000 0000" name="IDFrnt" id="IDFrnt" required>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Identity Back(NIC/Passport/Driving License)</label><br /><br />
+                        <input type="file" class="form-control input-mask" data-mask="00000,00%" placeholder="eg: 00000,00%" name="IDBack" id="IDBack" required>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Attach Other Document</label>
+                        <input type="file" class="form-control input-mask" data-mask="0000 0000 0000 0000" placeholder="eg: 0000 0000 0000 0000" name="otherDoc" id="otherDoc" required>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Attach your Picture</label>
+                        <input type="file" class="form-control input-mask" data-mask="0000 0000 0000 0000" placeholder="eg: 0000 0000 0000 0000" name="ImgUser" id="ImgUser" required>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-12 text-center" style="margin-top:10px;">
+                <input type="submit" class="btn btn-dark" id="btnSubmit" value="Submit" style="">
+            </div>
+        </div>
+    </div>
+}
+

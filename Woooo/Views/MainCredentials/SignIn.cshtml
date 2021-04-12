@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "SignIn";
+    Layout = "~/Views/Shared/_mainLayout.cshtml";
+}
+
+<h2>SignIn</h2>
+
+@using (Html.BeginForm("SignIn", "MainCredentials", FormMethod.Post))
+ {
+    <div class="form-horizontal" style="color:aliceblue">
+
+        <input type="text" name="Name" id="Name"/>
+        <input type="text" name="password" id="password"/>
+        <button type="submit" class="btn btn-success">SignIn</button>
+    </div>
+ }

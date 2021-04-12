@@ -1,0 +1,135 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Material Admin Extended Dark</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
+    <style>
+        .logoWoo{
+            height:50px;
+            width:50px;
+        }
+
+        #WoooBlock{
+            margin-bottom:40px;
+        }
+    </style>
+
+    <!-- Vendors -->
+    <link href="~/assets/dashboard/resources/vendors/animate.css/animate.min.css" rel="stylesheet">
+    <link href="~/assets/dashboard/resources/vendors/zwicon/zwicon.min.css" rel="stylesheet">
+    <link href="~/assets/dashboard/resources/vendors/overlay-scrollbars/OverlayScrollbars.min.css" rel="stylesheet">
+    <link href="~/assets/dashboard/resources/vendors/fullcalendar/core/main.min.css" rel="stylesheet">
+    <link href="~/assets/dashboard/resources/vendors/fullcalendar/daygrid/main.min.css" rel="stylesheet">
+
+    <link href="~/assets/dashboard/resources/css/app.min.css" rel="stylesheet">
+    <link href="~/assets/dashboard/resources/css/preloader.css" rel="stylesheet" />
+    <script src="~/assets/dashboard/resources/js/preloader.js"></script>
+</head>
+
+<body>
+    @*<div class="preloader">
+        <div class="layer"></div>
+         end layer 
+        <div class="inner">
+            <figure> <img src="~/assets/images/preloader.gif" alt="Image"> </figure>
+            <span>Site Loading</span>
+        </div>
+         end inner 
+    </div>
+    <div class="page-transition">
+        <div class="layer"></div>
+         end layer 
+    </div>*@
+    <header class="header" style="height:100px; z-index:0.5;">
+        <div class="header__main">
+            <div class="logo d-none d-md-block" style="margin-top:-35px;">
+                <div class="logoWoo"> <a href="/Dashboard/Index"><img src="~/assets/images/logo.png" alt="Image" height="80" width="80"></a> </div>
+            </div>
+
+            <ul class="top-nav">
+            </ul>
+
+            <div class="user dropdown">
+                <a data-toggle="dropdown" class="d-block" href="#">
+                    <img class="user__img" src="~/assets/dashboard/demo/img/contacts/5.jpg" alt="">
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right">
+                    <div class="dropdown-header">Hello Malinda Hollaway!</div>
+                    <a class="dropdown-item" href="profile-about.html"><i class="zmdi zmdi-account"></i> View Profile</a>
+                    <a class="dropdown-item" href="#"><i class="zmdi zmdi-input-antenna"></i> Privacy Settings</a>
+                    <a class="dropdown-item" href="#"><i class="zmdi zmdi-settings"></i> Settings</a>
+                    <a class="dropdown-item" href="/MainCredentials/Logout"><i class="zmdi zmdi-time-restore"></i> Logout</a>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <div class="main">
+        <aside class="sidebar navigation">
+
+            <div class="scrollbar" style="margin-top:-80px;">
+                <div class="logo d-none d-md-block" id="WoooBlock">
+                    <a href="#">
+                        Woooo
+                        <small>Woooo User Panel</small>
+                    </a>
+
+                </div>
+                <ul class="navigation__menu">
+                    <li>
+                        <a class="text-active-blue active" href="/Dashboard/Index"><i class="zwicon-home text-blue"></i>Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="/Dashboard/KYC" class="text-active-green "><i class="zwicon-note text-purple"></i>KYC</a>
+                    </li>
+                    <li>
+                        <a href="/Dashboard/BuyAssets"><i class="zwicon-layout-2 text-amber"></i>Buy Assets</a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <section class="content" style="position:relative; margin-top:-65px;">
+            @RenderBody()
+
+
+            <footer class="footer">
+                ©Copyright &copy; 2021 WOOOO
+
+                <nav class="footer__menu">
+                    <a href="/Dashboard/Index">Home</a>
+                </nav>
+            </footer>
+        </section>
+    </div>
+
+    <!-- Vendors -->
+    <script src="~/assets/dashboard/resources/vendors/jquery/jquery.min.js"></script>
+    <script src="~/assets/dashboard/resources/vendors/popper.js/popper.min.js"></script>
+    <script src="~/assets/dashboard/resources/vendors/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/assets/dashboard/resources/vendors/headroom/headroom.min.js"></script>
+    <script src="~/assets/dashboard/resources/vendors/overlay-scrollbars/jquery.overlayScrollbars.min.js"></script>
+    <script src="~/assets/dashboard/resources/vendors/flot/jquery.flot.js"></script>
+    <script src="~/assets/dashboard/resources/vendors/flot/jquery.flot.resize.js"></script>
+    <script src="~/assets/dashboard/resources/vendors/flot/flot.curvedlines/curvedLines.js"></script>
+    <script src="~/assets/dashboard/resources/vendors/sparkline/jquery.sparkline.min.js"></script>
+    <script src="~/assets/dashboard/resources/vendors/easy-pie-chart/jquery.easypiechart.min.js"></script>
+    <script src="~/assets/dashboard/resources/vendors/jqvmap/jquery.vmap.min.js"></script>
+    <script src="~/assets/dashboard/resources/vendors/jqvmap/maps/jquery.vmap.world.js"></script>
+    <script src="~/assets/dashboard/resources/vendors/fullcalendar/core/main.min.js"></script>
+    <script src="~/assets/dashboard/resources/vendors/fullcalendar/daygrid/main.min.js"></script>
+
+    <!-- Site Functions & Actions -->
+    <script src="~/assets/dashboard/resources/js/app.min.js"></script>
+</body>
+</html>
